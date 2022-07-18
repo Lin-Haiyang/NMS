@@ -9,22 +9,25 @@ import RoleList from './rolelist/RoleList'
 import RightList from './rightlist/RightList'
 import Home from './home/Home'
 import './SandBox.css'
+import { Content } from 'antd/lib/layout/layout';
 
 export default function sandBox() {
-  return (
-    <Layout>
-      <SideMenu></SideMenu>
-      <Layout className="site-layout">
-        <TopHeader></TopHeader>
-        <Switch>
-          <Route path='/home' component={Home} />
-          <Route path='/user-manage/list' component={UserLIst} />
-          <Route path='/right-manage/role/list' component={RoleList} />
-          <Route path='/right-manage/right/list' component={RightList} />
-          <Redirect from='/' to='/home' exact />
-          <Route path='*' component={NoPermission} />
-        </Switch>
-      </Layout>
-    </Layout>
-  )
+    return (
+        <Layout>
+            <SideMenu></SideMenu>
+            <Layout className="site-layout">
+                <TopHeader></TopHeader>
+                <Content>
+                    <Switch>
+                        <Route path='/home' component={Home} />
+                        <Route path='/user-manage/list' component={UserLIst} />
+                        <Route path='/right-manage/role/list' component={RoleList} />
+                        <Route path='/right-manage/right/list' component={RightList} />
+                        <Redirect from='/' to='/home' exact />
+                        <Route path='*' component={NoPermission} />
+                    </Switch>
+                </Content>
+            </Layout>
+        </Layout>
+    )
 }
